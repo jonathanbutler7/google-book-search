@@ -1,0 +1,9 @@
+.form {
+    background-color: #DEDEDE;
+    padding: 10px
+}
+
+label, select {
+    padding-left: 10px;
+    padding-right: 10px;
+}
