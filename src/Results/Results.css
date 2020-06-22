@@ -1,0 +1,14 @@
+.results-innards {
+    display: flex;
+    margin: 25px;
+    /* padding: 15px; */
+}
+
+.results-text {
+    padding: 15px;
+}
+
+.result-card {
+    border: 2px solid #DEDEDE;
+    margin: 10px;
+}

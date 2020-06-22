@@ -4,13 +4,19 @@ import './Results.css'
 
 class Results extends React.Component { 
     render() {
+        
         const books = this.props.books.map((i, index) => {
             return ( 
-                <div key={index}>
-                    <h1>{i.title}</h1>
-                    <img src={i.photoUrl} />
-                    <p>{i.snippet}</p>
-                    <p>{i.author}</p>
+                <div key={index} className="result-card">
+                    <h3>{i.title}</h3>
+                    <div className="results-innards">
+                        <img src={i.photoUrl} alt=""/>
+                        <div className="results-text">
+                            <h4>AUTHOR: {i.author}</h4>
+                            <p>{i.price}</p>
+                            <p>{i.snippet.normalize('NFC')}</p>
+                        </div>
+                    </div>
                 </div>
             )
         })
@@ -23,9 +29,3 @@ class Results extends React.Component {
 }
 
 export default Results
-
-                {/* {this.props.titles.map((i, index) =>
-                <h1 key={index}>{i}</h1>
-                )}
-                {this.props.photoUrls.map((i, index) =>
-                <img key={index} src={i}/>)} */}
