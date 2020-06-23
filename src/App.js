@@ -14,20 +14,26 @@ class App extends React.Component {
     }
   }
 
+  // displayResults() {
+  //   this.setState({
+  //     books: [...this.state]
+  //   })
+  // }
   
-
-  displayResults() {
+  setBooks = (books) => {
+    console.log(books)
     this.setState({
-      books: [...this.state]
+      books
     })
-  }
-  
+  } 
+
   render() {
     return (
       <div className="App">
         <Header />
         <Searchbar 
-          onSubmit={data => displayResults(data)}
+          setBooks={this.setBooks}
+          // onSubmit={data => displayResults(data)}
         />
         <h1>Results:</h1>
         <Results 

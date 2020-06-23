@@ -13,7 +13,7 @@ class Searchbar extends React.Component {
             [ev.target.name]: ev.target.value
         })
     }
-
+//handleSearch would be better
     handleSubmit = (event) => {
         event.preventDefault()
         // const params = {
@@ -43,13 +43,34 @@ class Searchbar extends React.Component {
         })
             .then(res => res.json())
             .then(data => {
-            // console.log(data)
-            this.props.displayResults(data)
-        })
+            console.log(data)
+            let price
+            let snippet
+             const books = data.items.map(i => {
+                    
+                    i.saleInfo.retailPrice 
+                    ? price = i.saleInfo.retailPrice.amount 
+                    : price = 'no pricing information available';
+
+                    i.searchInfo
+                    ? snippet = i.searchInfo.textSnippet
+                    : snippet = 'no snippet available';
+
+                    return {
+                        title: i.volumeInfo.title, 
+                        photoUrl: i.volumeInfo.imageLinks.thumbnail, 
+                        author: i.volumeInfo.authors, 
+                        price,
+                        snippet
+                    }
+                })
+            this.props.setBooks(books)
+        }) 
         .catch(err => {
         this.setState({
         error: err.message
       })
+
     })
 
     this.setState({
@@ -78,6 +99,7 @@ class Searchbar extends React.Component {
                         value={this.state.printType}
                         onChange={ev => this.handleInputChange(ev)}
                     >
+                        <option>--Select--</option>
                         <option>all</option>
                         <option>books</option>
                         <option>magazines</option>
@@ -89,6 +111,7 @@ class Searchbar extends React.Component {
                         onChange={ev => this.handleInputChange(ev)}
                     >
                         {/* <option>No filter</option> */}
+                        <option>--Select--</option>
                         <option>free-ebooks</option>
                         <option>paid-ebooks</option>
                     </select>

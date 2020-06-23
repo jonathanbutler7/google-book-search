@@ -14,7 +14,7 @@ class Results extends React.Component {
                         <div className="results-text">
                             <h4>AUTHOR: {i.author}</h4>
                             <p>{i.price}</p>
-                            <p>{i.snippet.normalize('NFC')}</p>
+                            <p>{i.snippet}</p>
                         </div>
                     </div>
                 </div>
